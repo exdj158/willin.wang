@@ -23,6 +23,7 @@ import {
 } from 'remix-themes';
 import cls from 'classnames';
 import styles from './styles/global.css';
+import { i18n } from './services/i18n.server';
 import { themeSessionResolver } from './services/theme.server';
 import DrawerMenu from './components/navbar/drawer';
 // import Logo from './components/navbar/logo';
@@ -45,13 +46,16 @@ export type LoaderData = {
   };
 };
 
-export const loader: LoaderFunction = async ({ request, context }) => {
+export const loader: LoaderFunction = async ({ request }) => {
+  const locale = await i18n.getLocale(request);
   const { getTheme } = await themeSessionResolver(request);
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  const pv = await (context.env.VIEWS as KVNamespace).get('total', 'text');
+  // const pv = await (context.env.VIEWS as KVNamespace).get('total', 'text');
   const data: LoaderData = {
     // eslint-disable-next-line
-    pv,
+    // pv,
+    locale,
+    i18n: await i18n.getTranslations(locale, 'common'),
     requestInfo: {
       session: {
         theme: getTheme()
