@@ -4,6 +4,16 @@
 @tailwind variants;
 
 @layer base {
+  * {
+    cursor: url('/default.cur'), default;
+  }
+  a,
+  a *,
+  button,
+  button * {
+    cursor: url('/pointer.cur'), pointer !important;
+  }
+
   html {
     min-width: 360px;
     scroll-behavior: smooth;

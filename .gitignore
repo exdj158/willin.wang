@@ -3,8 +3,12 @@ node_modules
 *.log
 .DS_Store
 
-/demo/
+demo/
 /.cache
 /build
 /public/build
 /app/styles
+
+
+# Contentlayer
+.contentlayer
