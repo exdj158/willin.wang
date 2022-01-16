@@ -18,6 +18,7 @@ function getMdxComponent(code: string) {
   }: Parameters<typeof Component>['0']) {
     return (
       // @ts-expect-error the types are wrong here
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       <Component components={{ ...mdxComponents, ...components }} {...rest} />
     );
   }

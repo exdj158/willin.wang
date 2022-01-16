@@ -43,6 +43,7 @@ const computedFields: ComputedFields = {
 export const Post = defineDocumentType(() => ({
   name: 'Post',
   filePathPattern: 'posts/**/*.mdx',
+  bodyType: 'mdx',
   fields: MdxFields,
   computedFields
 }));
@@ -50,6 +51,7 @@ export const Post = defineDocumentType(() => ({
 export const Page = defineDocumentType(() => ({
   name: 'Page',
   filePathPattern: 'pages/**/*.mdx',
+  bodyType: 'mdx',
   fields: MdxFields,
   computedFields
 }));
@@ -57,7 +59,7 @@ export const Page = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: 'content',
   documentTypes: [Post, Page],
-  markdown: {
+  mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: []
   }
