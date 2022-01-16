@@ -12,17 +12,20 @@ export default function PostsPage() {
   const data = useLoaderData();
 
   return (
-    <div>
-      <h2>demo</h2>
+    <main>
+      <h2>
+        <Link to='/'>Home Page</Link>
+      </h2>
+
       {data.posts.map((post) => (
         <div key={post.title}>
           <h1>
-            <Link to={`/zh/posts/${post.slug}`}>{post.title}</Link>
+            <Link to={`/posts/${post.slug}`}>{post.title}</Link>
           </h1>
 
           <pre>{JSON.stringify(post, null, 2)}</pre>
         </div>
       ))}
-    </div>
+    </main>
   );
 }

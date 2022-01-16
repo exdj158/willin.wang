@@ -17,7 +17,11 @@ export const loader: LoaderFunction = async ({ request }) => {
 };
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <Document>
+      <Outlet />
+    </Document>
+  );
 }
 
 export function CatchBoundary() {

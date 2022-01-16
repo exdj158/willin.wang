@@ -5,8 +5,7 @@ import { translatedLngs, supportedLngs, fallbackLng } from '~/i18n.config';
 import { getRealPath } from '~/utils/i18next';
 
 const MenuItem = ({ lang, path, locale }: { [key: string]: string }) => {
-  // const url = lang === fallbackLng ? path : `/${lang}${path}`;
-  const url = `/${lang}${path}`;
+  const url = lang === fallbackLng ? path : `/${lang}${path}`;
   return (
     <motion.li
       className='flex mb-[20px] items-center cursor-pointer'

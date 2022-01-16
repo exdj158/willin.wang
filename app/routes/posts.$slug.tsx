@@ -5,7 +5,7 @@ import { getPosts } from '~/utils/posts';
 export const loader: LoaderFunction = () => {
   const posts = getPosts();
   return {
-    post: posts[1]
+    post: posts[0]
   };
 };
 
@@ -13,8 +13,12 @@ export default function PostsPage() {
   const data = useLoaderData();
 
   let Component = null;
-  if (typeof window !== 'undefined' && code) {
-    Component = useMdxComponent(data.post.body.raw);
+  if (typeof window !== 'undefined' && data.post.body.raw) {
+    try {
+      Component = useMdxComponent(data.post.body.raw);
+    } catch (e) {
+      console.error(e);
+    }
   }
   return (
     <div>

@@ -14,7 +14,6 @@ export function init() {
 }
 
 export function getRealPath(path: string): string {
-  console.log(path);
   const arr = path.split('/');
   arr.shift();
   if (supportedLngs.includes(arr[0])) {
