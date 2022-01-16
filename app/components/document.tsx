@@ -55,7 +55,7 @@ export default function Document({ children }: { children: ReactNode }) {
   const [{ data }] = matches;
   const { theme }: { theme: string } = data;
   return (
-    <ThemeProvider specifiedTheme={theme} themeAction='action/set-theme'>
+    <ThemeProvider specifiedTheme={theme} themeAction='/action/set-theme'>
       <App>{children}</App>
     </ThemeProvider>
   );

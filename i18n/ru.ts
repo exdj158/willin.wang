@@ -1,3 +1,3 @@
 export const site = {
-  description: 'To be Willin is to be willing.'
+  description: 'To be done.'
 };

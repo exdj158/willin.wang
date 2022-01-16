@@ -1,12 +1,6 @@
-import { useState, useEffect } from 'react';
 import { useTheme, Theme } from 'remix-themes';
+import { useLoaded } from '~/hooks/use-loaded';
 import { MoonIcon, SunIcon } from './svg';
-
-export const useLoaded = () => {
-  const [loaded, setLoaded] = useState(false);
-  useEffect(() => setLoaded(true), []);
-  return loaded;
-};
 
 export const ThemeToggle = () => {
   const [theme, setTheme] = useTheme();

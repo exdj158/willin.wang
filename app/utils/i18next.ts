@@ -12,3 +12,12 @@ export function init() {
     react: { useSuspense: false }
   });
 }
+
+export function getRealPath(path: string): string {
+  const arr = path.split('/');
+  arr.shift();
+  if (supportedLngs.includes(arr[0])) {
+    arr.shift();
+  }
+  return arr.join('/') || '/';
+}
