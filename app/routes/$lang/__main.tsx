@@ -1,5 +1,5 @@
-import Route from '~/routes/index';
+import PageComponent, { loader, meta } from '~/routes/index';
 
-export * from '~/routes/index';
+export { loader, meta };
 
-export default Route;
+export default PageComponent;

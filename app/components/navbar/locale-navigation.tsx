@@ -63,7 +63,7 @@ export const LocaleNavigation = () => {
   const currentRoute = matches[matches.length - 1];
   const path = getRealPath(currentRoute.pathname);
   const locale =
-    currentRoute.params.lang ?? (currentRoute.data.locale as string);
+    currentRoute.params.lang ?? (currentRoute.data?.locale as string);
 
   return (
     <motion.ul

@@ -1,4 +1,4 @@
-import { json, useLoaderData, Link, useMatches, redirect } from 'remix';
+import { json, useLoaderData, Link, useMatches, redirect, Outlet } from 'remix';
 import type { LoaderFunction, MetaFunction } from 'remix';
 import { useTranslation } from 'react-i18next';
 import { useRemixI18Next } from 'remix-i18next';
@@ -7,7 +7,7 @@ import Document from '~/components/document';
 import { i18n, i18nSessionResolver } from '~/services/i18n.server';
 import { getRealPath } from '~/utils/i18next';
 
-export const loader: LoaderFunction = async ({ params, request }) => {
+export const loader: LoaderFunction = async ({ params, request, context }) => {
   const { lang } = params;
   const session = await i18nSessionResolver(request);
   const { locale } = session;
@@ -44,7 +44,7 @@ export const meta: MetaFunction = ({ data }) => ({
   description: JSON.stringify(data)
 });
 
-export default function HomePage() {
+export default function PageComponent() {
   const matches = useMatches();
   const data = useLoaderData<Record<string, unknown>>();
   const { locale } = useLoaderData<{ locale: string }>();
@@ -58,6 +58,7 @@ export default function HomePage() {
       <main className='prose max-w-none'>
         <pre>{JSON.stringify(matches)}</pre>
         <pre>{JSON.stringify(data)}</pre>
+        <Outlet></Outlet>
       </main>
     </Document>
   );

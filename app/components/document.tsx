@@ -18,7 +18,7 @@ function App({ children }: { children: ReactNode }) {
   const matches = useMatches();
   const [{ params, data }] = matches;
   const { lang } = params;
-  const { theme: sessionTheme }: { theme: string } = data;
+  const { theme: sessionTheme }: { theme: string } = data || {};
 
   const [theme = 'dark'] = useTheme();
 
@@ -53,7 +53,7 @@ function App({ children }: { children: ReactNode }) {
 export default function Document({ children }: { children: ReactNode }) {
   const matches = useMatches();
   const [{ data }] = matches;
-  const { theme }: { theme: string } = data;
+  const { theme = 'dark' }: { theme: string } = data || {};
   return (
     <ThemeProvider specifiedTheme={theme} themeAction='/action/set-theme'>
       <App>{children}</App>
